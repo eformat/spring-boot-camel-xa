@@ -32,11 +32,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <snowdrop-narayana.version>1.0.0</snowdrop-narayana.version>
-        <spring-boot.version>1.5.11.RELEASE</spring-boot.version>
+        <snowdrop-narayana.version>1.0.1</snowdrop-narayana.version>
+        <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
 
         <!-- versions of Maven plugins -->
-        <fabric8-maven-plugin.version>3.5.38</fabric8-maven-plugin.version>
+        <fabric8-maven-plugin.version>3.5.41</fabric8-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
