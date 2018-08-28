@@ -58,6 +58,22 @@ Install dependencies:
 - From the Openshift catalog install `postgresql` using `theuser` as username and `Thepassword1!` as password
 - From the Openshift catalog install a `A-MQ` broker using `theuser` as username and `Thepassword1!` as password
 
+```bash
+-- deploy postgres
+oc process --parameters postgresql-persistent -n openshift
+oc new-app postgresql-persistent -p POSTGRESQL_USER=theuser -p POSTGRESQL_PASSWORD=Thepassword1!
+-- Change the Postgresql database to accept prepared statements
+oc env dc/postgresql POSTGRESQL_MAX_PREPARED_TRANSACTIONS=100
+
+-- deploy amq
+oc process --parameters amq63-persistent -n openshift
+oc new-app amq63-persistent -p MQ_USERNAME=theuser -p MQ_PASSWORD=Thepassword1! -p AMQ_STORAGE_USAGE_LIMIT=1gb -p AMQ_MESH_DISCOVERY_TYPE=kube
+oc policy add-role-to-user view system:serviceaccount:$(oc project -q):default
+-- amq delete readiness probe, 3.10 ?
+
+```
+
+
 Change the Postgresql database to accept prepared statements:
 
     
